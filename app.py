@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+import os
 
 # ================= SETTINGS =================
 PAGE_TITLE = "Digital CV | Leart Bokshi"
@@ -13,29 +14,20 @@ LINKEDIN_URL = "https://www.linkedin.com/in/leart-bokshi-228823213/"
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
-# ================= FILES =================
-profile_pic_file = "assets/profile-pic.png"
-resume_file = "assets/egezon baruti cv.pdf"   # <-- PDF yt real
+# ================= FILE PATHS =================
+PROFILE_PIC_PATH = os.path.join("assets", "profile-pic.png")
 
-# Load profile image (safe)
+# ================= LOAD IMAGE =================
 try:
-    profile_pic = Image.open(profile_pic_file)
-except:
+    profile_pic = Image.open(PROFILE_PIC_PATH)
+except FileNotFoundError:
     profile_pic = None
 
-# Load PDF safely
-try:
-    with open(resume_file, "rb") as f:
-        pdf_bytes = f.read()
-    pdf_ok = True
-except:
-    pdf_bytes = None
-    pdf_ok = False
+# ================= SIDEBAR NAVIGATION =================
+st.sidebar.title("Navigation")
+page = st.sidebar.radio("Go to", ["Home", "About"])
 
-# ================= NAVIGATION =================
-page = st.sidebar.radio("Navigate", ["Home", "About"])
-
-# ================= HOME =================
+# ================= HOME PAGE =================
 if page == "Home":
 
     col1, col2 = st.columns([1, 2])
@@ -44,81 +36,81 @@ if page == "Home":
         if profile_pic:
             st.image(profile_pic, width=230)
         else:
-            st.write("📷 Add profile image in assets")
+            st.info("📷 Add profile image in assets folder")
 
     with col2:
         st.title(NAME)
-        st.write(DESCRIPTION)
+        st.subheader(DESCRIPTION)
 
-        # Download CV button (safe)
-        if pdf_ok:
-            st.download_button(
-                label="📄 Download CV",
-                data=pdf_bytes,
-                file_name="Leart_Bokshi_CV.pdf",
-                mime="application/pdf",
-            )
-        else:
-            st.warning("CV PDF not found in assets folder")
+        st.write(f"📧 {EMAIL}")
+        st.write(f"🔗 {LINKEDIN_URL}")
+
+    st.markdown("---")
 
     # ================= FOCUS =================
-    st.subheader("Focus Area")
+    st.subheader("🎯 Focus Area")
     st.write("""
-- 🎓 Data Science & Artificial Intelligence
-- 🧠 Machine Learning basics
-- 📊 Data analysis & visualization
-- 💻 Python programming
+- Data Science & Artificial Intelligence  
+- Machine Learning  
+- Data Analysis & Visualization  
+- Python Programming  
 """)
+
+    st.markdown("---")
 
     # ================= SKILLS =================
-    st.subheader("Skills")
+    st.subheader("🛠 Skills")
     st.write("""
-- Python (Pandas, NumPy, Scikit-learn basics)
-- SQL fundamentals
-- Machine Learning concepts
-- Data visualization
-- HTML, CSS, JavaScript basics
+- Python (Pandas, NumPy, Scikit-learn basics)  
+- SQL fundamentals  
+- Excel (Pivot tables, formulas, analysis)  
+- Machine Learning basics  
+- Data Visualization (Matplotlib / Seaborn)  
+- HTML, CSS, JavaScript basics  
 """)
 
-    # ================= WORK EXPERIENCE =================
-    st.subheader("Work Experience")
-    st.write("---")
+    st.markdown("---")
+
+    # ================= EXPERIENCE =================
+    st.subheader("💼 Work Experience")
 
     st.write("🏢 **Shtypshkronja Litografia**")
     st.write("04/2023 – Present")
+
     st.write("""
-- Puna në procese operative dhe organizative
-- Menaxhim i detyrave të përditshme
-- Koordinim i aktiviteteve të punës
+- Organizim i proceseve të punës  
+- Menaxhim i detyrave ditore  
+- Koordinim i aktiviteteve operative  
 """)
+
+    st.markdown("---")
 
     # ================= PROJECTS =================
-    st.subheader("Projects")
+    st.subheader("📂 Projects")
 
-    st.write("📌 Export–Import Business System (Kosovo)")
+    st.write("📊 **Export & Import Analysis of Kosovo (2018–2025)**")
     st.write("""
-- Analizë e proceseve të eksport-importit
-- Organizim i dokumentacionit dhe rrjedhës së punës
-- Kuptim i sistemeve biznesore dhe logjistikës
+- Pastrim dhe analizë e dataset-it me Python  
+- Vizualizim i trendeve ekonomike  
+- Insights nga të dhënat reale  
 """)
 
-    st.write("📌 Data Science Learning Projects")
+    st.write("🤖 **Data Science Learning Projects**")
     st.write("""
-- Data cleaning & preprocessing me Python
-- Modele bazike të Machine Learning
-- Ushtrime me Pandas dhe NumPy
+- Data cleaning & preprocessing  
+- Machine Learning basics  
+- Ushtrime me Pandas & NumPy  
 """)
 
-# ================= ABOUT =================
+# ================= ABOUT PAGE =================
 elif page == "About":
 
     st.title("About Me")
 
     st.write("""
-I am a Data Science & Artificial Intelligence student in the final stage of studies.
+I am a Data Science & Artificial Intelligence student in the final stage of my studies.
 
-I focus on machine learning, data analysis, and building practical projects using Python.
+I am passionate about machine learning, data analysis, and building real-world projects using Python.
+
+My goal is to become a professional Data Scientist / AI Engineer and work on impactful data-driven solutions.
 """)
-
-    st.write(f"📧 {EMAIL}")
-    st.write(f"🔗 {LINKEDIN_URL}")
