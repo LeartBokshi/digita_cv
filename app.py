@@ -14,7 +14,7 @@ LINKEDIN_URL = "https://www.linkedin.com/in/leart-bokshi-228823213/"
 
 st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
 
-# ================= FILE PATHS =================
+# ================= FILE PATH =================
 PROFILE_PIC_PATH = os.path.join("assets", "profile-pic.png")
 
 # ================= LOAD IMAGE =================
@@ -23,7 +23,7 @@ try:
 except FileNotFoundError:
     profile_pic = None
 
-# ================= SIDEBAR NAVIGATION =================
+# ================= SIDEBAR =================
 st.sidebar.title("Navigation")
 page = st.sidebar.radio("Go to", ["Home", "About"])
 
@@ -60,13 +60,17 @@ if page == "Home":
 
     # ================= SKILLS =================
     st.subheader("🛠 Skills")
+
     st.write("""
-- Python (Pandas, NumPy, Scikit-learn basics)  
-- SQL fundamentals  
-- Excel (Pivot tables, formulas, analysis)  
-- Machine Learning basics  
-- Data Visualization (Matplotlib / Seaborn)  
-- HTML, CSS, JavaScript basics  
+**Programming:** Python, Java, JavaScript  
+
+**Data & Analytics:** SQL, Excel, Power BI, SPSS  
+
+**Machine Learning:** Basic ML models, data preprocessing  
+
+**Visualization:** Matplotlib, Seaborn, Power BI dashboards  
+
+**Web Basics:** HTML, CSS  
 """)
 
     st.markdown("---")
@@ -92,7 +96,7 @@ if page == "Home":
     st.write("""
 - Pastrim dhe analizë e dataset-it me Python  
 - Vizualizim i trendeve ekonomike  
-- Insights nga të dhënat reale  
+- Nxjerrje e insight-eve nga të dhënat  
 """)
 
     st.write("🤖 **Data Science Learning Projects**")
@@ -110,7 +114,7 @@ elif page == "About":
     st.write("""
 I am a Data Science & Artificial Intelligence student in the final stage of my studies.
 
-I am passionate about machine learning, data analysis, and building real-world projects using Python.
+I am passionate about machine learning, data analysis, and building real-world projects using Python, Java, and data tools like Power BI and SPSS.
 
 My goal is to become a professional Data Scientist / AI Engineer and work on impactful data-driven solutions.
 """)
