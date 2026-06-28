@@ -7,7 +7,7 @@ PAGE_TITLE = "Digital CV | Leart Bokshi"
 PAGE_ICON = "👋"
 
 NAME = "Leart Bokshi"
-DESCRIPTION = "Data Science & Artificial Intelligence student"
+DESCRIPTION = "Data Science & Artificial Intelligence Student"
 
 EMAIL = "leartbokshi@gmail.com"
 LINKEDIN_URL = "https://www.linkedin.com/in/leart-bokshi-228823213/"
@@ -25,10 +25,17 @@ except FileNotFoundError:
 
 # ================= SIDEBAR =================
 st.sidebar.title("Navigation")
-page = st.sidebar.radio("Go to", ["Home", "About"])
 
-# ================= HOME PAGE =================
-if page == "Home":
+page = st.sidebar.radio(
+    "Go to",
+    ["🏠 Home", "👨‍💻 About", "📂 Projects"]
+)
+
+# ===========================================================
+# HOME
+# ===========================================================
+
+if page == "🏠 Home":
 
     col1, col2 = st.columns([1, 2])
 
@@ -36,7 +43,7 @@ if page == "Home":
         if profile_pic:
             st.image(profile_pic, width=230)
         else:
-            st.info("📷 Add profile image in assets folder")
+            st.info("Profile image not found.")
 
     with col2:
         st.title(NAME)
@@ -47,74 +54,209 @@ if page == "Home":
 
     st.markdown("---")
 
-    # ================= FOCUS =================
     st.subheader("🎯 Focus Area")
+
     st.write("""
-- Data Science & Artificial Intelligence  
-- Machine Learning  
-- Data Analysis & Visualization  
-- Python Programming  
+- Data Science & Artificial Intelligence
+- Machine Learning
+- Data Analysis & Visualization
+- Python Programming
 """)
 
     st.markdown("---")
 
-    # ================= SKILLS =================
-    st.subheader("🛠 Skills")
+    st.subheader("🛠 Technical Skills")
 
-    st.write("""
-**Programming:** Python, Java, JavaScript  
+    st.markdown("""
+### Programming Languages
+- Python
+- Java
+- JavaScript
 
-**Data & Analytics:** SQL, Excel, Power BI, SPSS  
+### Data & Analytics
+- SQL
+- Excel
+- Power BI
+- SPSS
 
-**Machine Learning:** Basic ML models, data preprocessing  
+### Machine Learning
+- Data Cleaning
+- Data Preprocessing
+- Basic Machine Learning Models
 
-**Visualization:** Matplotlib, Seaborn, Power BI dashboards  
+### Data Visualization
+- Matplotlib
+- Seaborn
+- Power BI Dashboards
 
-**Web Basics:** HTML, CSS  
+### Web Development
+- HTML
+- CSS
+- React
+- FastAPI
 """)
 
     st.markdown("---")
 
-    # ================= EXPERIENCE =================
     st.subheader("💼 Work Experience")
 
-    st.write("🏢 **Shtypshkronja Litografia**")
-    st.write("04/2023 – Present")
+    st.write("### Shtypshkronja Litografia")
 
-    st.write("""
-- Organizim i proceseve të punës  
-- Menaxhim i detyrave ditore  
-- Koordinim i aktiviteteve operative  
+    st.write("**04/2023 – Present**")
+
+    st.markdown("""
+- Organizing daily business processes
+- Managing operational tasks
+- Coordinating workflow
+- Team collaboration
+- Problem solving
 """)
 
-    st.markdown("---")
+# ===========================================================
+# ABOUT
+# ===========================================================
 
-    # ================= PROJECTS =================
-    st.subheader("📂 Projects")
-
-    st.write("📊 **Export & Import Analysis of Kosovo (2018–2025)**")
-    st.write("""
-- Pastrim dhe analizë e dataset-it me Python  
-- Vizualizim i trendeve ekonomike  
-- Nxjerrje e insight-eve nga të dhënat  
-""")
-
-    st.write("🤖 **Data Science Learning Projects**")
-    st.write("""
-- Data cleaning & preprocessing  
-- Machine Learning basics  
-- Ushtrime me Pandas & NumPy  
-""")
-
-# ================= ABOUT PAGE =================
-elif page == "About":
+elif page == "👨‍💻 About":
 
     st.title("About Me")
 
     st.write("""
-I am a Data Science & Artificial Intelligence student in the final stage of my studies.
+I am a final-year **Data Science & Artificial Intelligence** student passionate about transforming data into meaningful insights.
 
-I am passionate about machine learning, data analysis, and building real-world projects using Python, Java, and data tools like Power BI and SPSS.
+Throughout my studies, I have worked on projects involving data analysis, machine learning, business intelligence, and full-stack software development.
 
-My goal is to become a professional Data Scientist / AI Engineer and work on impactful data-driven solutions.
+I enjoy solving real-world problems using modern technologies such as Python, SQL, Power BI, React, and FastAPI.
+
+My long-term goal is to build a successful career as a Data Scientist or AI Engineer by developing intelligent and data-driven solutions.
+""")
+
+    st.markdown("---")
+
+    st.subheader("Education")
+
+    st.write("""
+**Bachelor in Data Science & Artificial Intelligence**
+
+University for Business and Technology (UBT)
+
+Expected Graduation: 2026
+""")
+
+    st.markdown("---")
+
+    st.subheader("Career Interests")
+
+    st.markdown("""
+- Artificial Intelligence
+- Machine Learning
+- Data Science
+- Data Analytics
+- Business Intelligence
+- Backend Development
+""")
+
+# ===========================================================
+# PROJECTS
+# ===========================================================
+
+elif page == "📂 Projects":
+
+    st.title("Projects Portfolio")
+
+    st.write("""
+Below are two of the most significant projects I have completed during my studies.
+""")
+
+    st.markdown("---")
+
+    # =======================================================
+
+    st.header("📊 Kosovo Export & Import Analysis (2018–2025)")
+
+    st.write("""
+This project focuses on analyzing Kosovo's export and import performance between **2018 and 2025** using official data from the **Kosovo Agency of Statistics (ASK)**.
+""")
+
+    st.subheader("Project Objectives")
+
+    st.markdown("""
+- Analyze yearly export trends
+- Analyze yearly import trends
+- Compare exports with imports
+- Identify economic patterns
+- Build interactive dashboards
+""")
+
+    st.subheader("Technologies Used")
+
+    st.markdown("""
+- Python
+- Pandas
+- NumPy
+- Matplotlib
+- Seaborn
+- Power BI
+""")
+
+    st.subheader("Main Tasks")
+
+    st.markdown("""
+- Data cleaning
+- Data preprocessing
+- Exploratory Data Analysis (EDA)
+- Trend analysis
+- Charts and visualizations
+- Dashboard development
+""")
+
+    st.subheader("Outcome")
+
+    st.write("""
+The project provides valuable insights into Kosovo's international trade by identifying import and export trends over time through interactive dashboards and Python visualizations.
+""")
+
+    st.markdown("---")
+
+    # =======================================================
+
+    st.header("💊 PharmAI – Pharmacy Management System")
+
+    st.write("""
+PharmAI is a modern full-stack web application developed for managing pharmacy operations efficiently.
+""")
+
+    st.subheader("Technologies Used")
+
+    st.markdown("""
+- React
+- FastAPI
+- SQL Server Express
+""")
+
+    st.subheader("System Features")
+
+    st.markdown("""
+- Medicine management
+- Inventory management
+- Sales management
+- Customer management
+- Database integration
+- Authentication
+- CRUD operations
+""")
+
+    st.subheader("My Contribution")
+
+    st.markdown("""
+- Frontend development with React
+- Backend API development using FastAPI
+- Database implementation using SQL Server Express
+- CRUD functionality
+- Testing and debugging
+""")
+
+    st.subheader("Outcome")
+
+    st.write("""
+The application streamlines pharmacy operations by providing an integrated solution for inventory, medicine management, and sales while ensuring efficient database management and a user-friendly interface.
 """)
